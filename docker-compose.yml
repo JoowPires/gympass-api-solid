@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=gympass_api
+    volumes:
+      - pgdata:/bitnami/postgresql
+    networks:
+      - pg-network
+
+volumes:
+  pgdata:
+
+networks:
+  pg-network:
+    driver: bridge

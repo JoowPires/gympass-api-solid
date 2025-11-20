@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(uuid())
+  name      String
+  email     String     @unique
+  password  String
+
+  role      Role       @default(MEMBER)
+
+  checkIns  CheckIn[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Gym {
+  id        String     @id @default(uuid())
+  title     String
+  description String?
+  phone     String?
+  
+  latitude  Decimal
+  longitude Decimal
+
+  checkIns  CheckIn[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model CheckIn {
+  id            String    @id @default(uuid())
+  
+  userId        String
+  gymId         String
+
+  createdAt     DateTime  @default(now())
+  validatedAt   DateTime?
+
+  user          User      @relation(fields: [userId], references: [id])
+  gym           Gym       @relation(fields: [gymId], references: [id])
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
