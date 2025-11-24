@@ -54,7 +54,7 @@ O projeto foi construído seguindo rigorosamente os princípios de **Clean Archi
 
 1. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/SEU-USUARIO/gympass-api-solid.git](https://github.com/SEU-USUARIO/gympass-api-solid.git)
+   git clone [https://github.com/JoowPires/gympass-api-solid.git](https://github.com/JoowPires/gympass-api-solid.git)
    cd gympass-api-solid
 ````
 
